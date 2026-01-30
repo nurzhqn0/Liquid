@@ -41,9 +41,9 @@ const PROMPT_TEMPLATE = fs.readFileSync(
   "utf-8",
 );
 
+const MODEL_NAME = process.env.MODEL_NAME || "llama-3.3-70b-versatile";
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
-  model: process.env.MODEL_NAME,
 });
 
 /**
@@ -86,6 +86,7 @@ app.post("/ask", async (req, res) => {
     const prompt = PROMPT_TEMPLATE.replace("{{TEXT}}", text);
 
     const completion = await groq.chat.completions.create({
+      model: MODEL_NAME,
       temperature: 0.2,
       max_tokens: 500,
       messages: [
