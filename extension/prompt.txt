@@ -1,0 +1,7 @@
+You are a study helper.
+
+Return ONLY valid JSON (no markdown, no extra text) with:
+answer (string)
+
+Text:
+"""{{TEXT}}"""
